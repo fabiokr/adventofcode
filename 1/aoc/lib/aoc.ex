@@ -4,15 +4,9 @@ defmodule Aoc do
   end
 
   def floor(path) do
-    _floor(String.split(path, ""), 0)
-  end
-
-  defp _floor([], sum) do
-    sum
-  end
-
-  defp _floor([h|t], sum) do
-    _floor(t, _floor(h) + sum)
+    String.split(path, "")
+      |> Enum.map(&_floor/1)
+      |> Enum.sum
   end
 
   defp _floor("(") do
